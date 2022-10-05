@@ -193,7 +193,7 @@ while (true) {
     }
 }*/
 
-// 입금부분 함수
+/*// 입금부분 함수
 function quiz8InputMoney() {
     money = prompt(`얼마를 입금하시겠습니까?`);
     if (isNaN(money)) {
@@ -217,25 +217,47 @@ function quiz8OutputMoney() {
         sum = sum - minus;
         console.log(`출금 금액은 ${minus}이며, 현재 잔액은 ${sum}원 입니다.`);
     }
+}*/
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// 1. money, coffee, price 의 초기값을 설정하는 함수 생성, quiz7Setup
+// 2. 커피 판매 부분을 함수로 생성, quiz7CoffeeSale
+
+// 사용자의 소지금액 입력 받기
+let money = prompt("소지하고 있는 금액을 입력하세요 : ");
+console.log(`현재 소지금액은 ${money}원 입니다.`);
+// 커피 재고량
+let coffee = 10;
+
+// 커피 혹은 돈이 없을때까지 무한 반복
+while (true) {
+    console.log('커피를 주문합니다.');
+
+    // 소지 금액이 커피 가격보다 많은지 확인
+    if (money >= 300) {
+        // 커피 재고량이 충분한지 확인
+        if (coffee > 0) {
+            coffee--; // 커피 재고량 감소
+            money -= 300; // 소지 금액 차감
+            console.log('커피를 한잔 판매합니다.');
+            console.log(`현재 남은 커피량 : ${coffee}`);
+        }
+        // 커피 재고량 부족 시
+        else {
+            console.log('커피가 다 팔렸습니다.');
+            console.log('영업을 종료합니다.');
+            break;
+        }
+    }
+    // 소지 금액 부족 시
+    else {
+        console.log('돈이 부족합니다.');
+        break;
+    }
 }
 
-alert("안녕하세요. java505 은행입니다.");
-let money = 0;
-
-let sum = 0;
-while (true) {
-    let session1 = prompt("1 : 입금, 2 : 예금 확인, 3 : 출금, 0 : 종료");
-
-    if ( session1 == 1) {
-        quiz8InputMoney();
-    }
-    else if (session1 == 2) {
-        quiz8CheckMoney()
-    }
-    else if (session1 == 3) {
-        quiz8OutputMoney()
-    }
-    else if (session1 == 0) {
-        console.log(`프로그램을 종료합니다.`);
-        break;
-    }}
+// 문제 8) 문제 5의 소스코드를 함수를 사용하는 방식으로 수정하세요
+// 1. 입금 부분을 함수로 생성, quiz8InputMoney
+// 2. 예금 확인 부분을 함수로 생성, quiz8CheckMoney
+// 3. 출금 부분을 함수로 생성, quiz8OutputMoney
